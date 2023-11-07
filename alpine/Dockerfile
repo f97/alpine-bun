@@ -1,4 +1,4 @@
-FROM alpine:3.16
+FROM oven/bun:alpine
 
 LABEL maintainer "f97 <huynhduckhoan@gmail.com>"
 
@@ -8,6 +8,3 @@ ENV REFRESHED_AT $REFRESHED_AT
 RUN apk add --no-cache \
     git \
     bash \
-    unzip \
-    && curl -fsSL https://bun.sh/install | bash \
-    

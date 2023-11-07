@@ -14,4 +14,4 @@ jobs:
 
       - run: brew install hadolint
 
-      - run: hadolint {3.16,3.17,3.18}/Dockerfile
+      - run: hadolint {canary-alpine,alpine}/Dockerfile

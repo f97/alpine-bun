@@ -15,9 +15,8 @@ jobs:
 
       - name: Build the Docker image
         run: |
-          docker run -i $(docker build -q 3.16) /bin/sh -c "docker --version"
-          docker run -i $(docker build -q 3.17) /bin/sh -c "docker --version "
-          docker run -i $(docker build -q 3.18) /bin/sh -c "docker --version"
+          docker run -i $(docker build -q canary-alpine) /bin/sh -c "bun --version"
+          docker run -i $(docker build -q alpine) /bin/sh -c "bun --version "
 
   auto-merge:
     runs-on: ubuntu-latest

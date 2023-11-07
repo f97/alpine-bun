@@ -16,15 +16,12 @@ jobs:
       fail-fast: false
       matrix:
         docker-file:
-          - path: 3.18
-            tags: "3.18"
-            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7,linux/arm/v6
-          - path: 3.17
-            tags: "3.17"
-            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7,linux/arm/v6
-          - path: 3.16
-            tags: "3.16 latest"
-            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7,linux/arm/v6
+          - path: alpine
+            tags: "canary-alpine"
+            platforms: linux/amd64, linux/arm64
+          - path: canary-alpine
+            tags: "canary-alpine latest"
+            platforms: linux/amd64, linux/arm64
 
     steps:
       - name: Checkout
@@ -33,7 +30,7 @@ jobs:
       - name: Prepare
         id: prepare
         run: |
-          GHCR_DOCKER_IMAGE=ghcr.io/f97/alpine-bun
+          DOCKER_IMAGE=ghcr.io/f97/alpine-bun
 
           TEMP="${{ matrix.docker-file.tags }}"
           TAGZ=($TEMP)
@@ -42,9 +39,9 @@ jobs:
           for i in "${!TAGZ[@]}"; do
             if [ "$i" -eq "0" ];
             then
-              TAGS="${GHCR_DOCKER_IMAGE}:${TAGZ[$i]}"
+              TAGS="${DOCKER_IMAGE}:${TAGZ[$i]}"
             else
-              TAGS="${TAGS},${GHCR_DOCKER_IMAGE}:${TAGZ[$i]}"
+              TAGS="${TAGS},${DOCKER_IMAGE}:${TAGZ[$i]}"
             fi
           done
 
