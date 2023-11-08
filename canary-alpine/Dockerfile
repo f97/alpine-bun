@@ -9,3 +9,4 @@ RUN apk add --no-cache \
     git \
     bash \
     nodejs \
+    npm \
