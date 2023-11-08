@@ -8,3 +8,4 @@ ENV REFRESHED_AT $REFRESHED_AT
 RUN apk add --no-cache \
     git \
     bash \
+    nodejs \
