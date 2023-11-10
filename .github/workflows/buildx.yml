@@ -17,10 +17,10 @@ jobs:
       matrix:
         docker-file:
           - path: alpine
-            tags: "canary"
+            tags: "canary latest"
             platforms: linux/amd64, linux/arm64
           - path: canary-alpine
-            tags: "canary-alpine latest"
+            tags: "canary-alpine"
             platforms: linux/amd64, linux/arm64
 
     steps:
